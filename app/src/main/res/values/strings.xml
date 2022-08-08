@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">KYC</string>
+    <string name="arrow_back">Go back to main menu</string>
+    <string name="image">Image</string>
+</resources>
