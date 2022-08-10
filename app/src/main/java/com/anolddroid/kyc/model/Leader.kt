@@ -10,7 +10,7 @@ data class Leader(
     val image: String,
 ): Parcelable
 
-val leaders = listOf<Leader>(
+val listOfLeaders = listOf(
     Leader(
         title = "Governor",
         name = "Julius Scot Nyerere",

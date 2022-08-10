@@ -13,7 +13,7 @@ data class Constituency(
     val wards: List<Leader>
 ) : Parcelable
 
-val Constituencies = listOf(
+val listOfConstituencies = listOf(
     Constituency(
         name = "Cherengany Constituency",
         leader = Leader("Member of Parliament", "Joshua Kipserem Kutuny",
