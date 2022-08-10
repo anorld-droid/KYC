@@ -1,5 +1,6 @@
 package com.anolddroid.kyc.ui.views.home.components
 
+import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.aspectRatio
@@ -18,22 +19,23 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.anolddroid.kyc.model.Constituency
+import com.anolddroid.kyc.ui.Destinations
 import com.anolddroid.kyc.ui.components.CircularImage
 import com.anolddroid.kyc.ui.theme.KYCTheme
 import com.anolddroid.kyc.ui.views.home.CardShape
 import com.anolddroid.kyc.ui.views.home.MinImageSize
 import com.anolddroid.kyc.ui.views.home.NameProportion
+import com.google.gson.Gson
 import kotlin.math.max
 
 @Composable
 fun ImageText(
-    title: String,
     modifier: Modifier = Modifier,
-    image: String? = null,
-    drawable: Int? = null,
     gradient: List<Color> = KYCTheme.colors.gradient2_3,
     style: TextStyle = MaterialTheme.typography.subtitle1,
-    navController: NavController
+    navController: NavController,
+    constituency: Constituency
 ) {
     Layout(
         modifier = modifier
@@ -41,10 +43,15 @@ fun ImageText(
             .shadow(elevation = 2.dp, shape = CardShape)
             .clip(CardShape)
             .background(Brush.horizontalGradient(gradient))
-            .clickable {  },
+            .clickable {
+                val json = Uri.encode(Gson().toJson(constituency))
+                navController.navigate(
+                    "${Destinations.constituencyDetails}/$json"
+                )
+            },
         content = {
             Text(
-                text = title,
+                text = constituency.name,
                 style = style,
                 color = KYCTheme.colors.textSecondary,
                 modifier = Modifier
@@ -52,8 +59,8 @@ fun ImageText(
                     .padding(start = 8.dp)
             )
             CircularImage(
-                imageUrl = image,
-                drawable = drawable,
+                imageUrl = constituency.image,
+                drawable = null,
                 modifier = Modifier.fillMaxSize(),
                 navController = navController
             )

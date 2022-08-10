@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.anolddroid.kyc.model.Constituency
+import com.anolddroid.kyc.ui.views.details.ConstituencyDetail
 import com.anolddroid.kyc.ui.views.details.showImage
 import com.anolddroid.kyc.ui.views.home.Home
 import com.google.gson.Gson
@@ -40,14 +41,16 @@ fun KYCNavGraph(
             )
         }
         composable(
-            Destinations.constituencyDetails,
+            "${Destinations.constituencyDetails}/{constituency}",
             arguments = listOf(
-                navArgument("photo") {
+                navArgument("constituency") {
                     type = AssertParamType()
                 })
         ) { backStackEntry ->
             val constituency = backStackEntry.arguments?.getParcelable<Constituency>("constituency")
-            //TODO Navigate
+            if (constituency != null) {
+                ConstituencyDetail(constituency = constituency, navController = navController)
+            }
         }
         composable("${Destinations.showImage}/{image}") { navBackStackEntry ->
             val imageUrl = navBackStackEntry.arguments?.getString("image")

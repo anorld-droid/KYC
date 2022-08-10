@@ -47,6 +47,7 @@ fun PersonItem(
                 Text(
                     text = leader.title,
                     style = MaterialTheme.typography.h5,
+                    textAlign = TextAlign.Center,
                     modifier = Modifier.align(Alignment.CenterVertically)
                 )
             }
