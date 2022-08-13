@@ -7,10 +7,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.anolddroid.kyc.model.Constituency
-import com.anolddroid.kyc.ui.views.details.ConstituencyDetail
+import com.anolddroid.kyc.ui.views.details.constituency.ConstituencyDetail
 import com.anolddroid.kyc.ui.views.details.showImage
 import com.anolddroid.kyc.ui.views.home.Home
 import com.google.gson.Gson
