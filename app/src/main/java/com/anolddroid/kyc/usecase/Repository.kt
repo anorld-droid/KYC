@@ -8,13 +8,19 @@ import javax.inject.Inject
 
 interface Repository {
     fun getConstituencies() : List<Constituency>
-    fun getLeaders() : List<Leader>
+    fun governor(): Leader
+    fun deputyGovernor(): Leader
+    fun senator() : Leader
 }
 
 
 class RepositoryImpl  @Inject constructor(): Repository{
     override fun getConstituencies() = listOfConstituencies
 
-    override fun getLeaders() = listOfLeaders
+    override fun governor() = listOfLeaders[0]
+
+    override fun deputyGovernor() = listOfLeaders[1]
+
+    override fun senator() = listOfLeaders[2]
 
 }

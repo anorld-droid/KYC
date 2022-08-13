@@ -2,6 +2,7 @@ package com.anolddroid.kyc.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.anolddroid.kyc.model.Constituency
+import com.anolddroid.kyc.model.Leader
 import com.anolddroid.kyc.usecase.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,8 +17,16 @@ class MainViewModel @Inject constructor(
     val constituencies: StateFlow<List<Constituency>>
     get() = _constituencies
 
-    private val _leaders =  MutableStateFlow(repo.getConstituencies())
-    val leaders: StateFlow<List<Constituency>>
-        get() = _leaders
+    private val _governor =  MutableStateFlow(repo.governor())
+    val governor : StateFlow<Leader>
+        get() = _governor
+
+    private val _deputyGovernor =  MutableStateFlow(repo.deputyGovernor())
+    val deputyGovernor : StateFlow<Leader>
+        get() = _deputyGovernor
+
+    private val _senator =  MutableStateFlow(repo.senator())
+    val senator : StateFlow<Leader>
+        get() = _senator
 
 }
