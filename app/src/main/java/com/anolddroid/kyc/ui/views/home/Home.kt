@@ -38,7 +38,7 @@ fun Home(navController: NavController) {
 @Composable
 private fun Body(navController: NavController, viewModel: MainViewModel) {
     val governor by viewModel.governor.collectAsState()
-    val senator by viewModel.deputyGovernor.collectAsState()
+    val senator by viewModel.senator.collectAsState()
     val deputyGovernor by viewModel.deputyGovernor.collectAsState()
     val constituencies by viewModel.constituencies.collectAsState()
     LazyColumn(modifier = Modifier
