@@ -1,7 +1,6 @@
 package com.anolddroid.kyc.ui.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -18,7 +17,7 @@ import com.google.accompanist.insets.statusBarsPadding
 import com.anolddroid.kyc.R
 
 @Composable
-fun HomeTopBar( title: String, navController: NavController, home: Boolean = true
+fun TopBar( title: String, navController: NavController
 ) {
     Column(
         modifier = Modifier.statusBarsPadding()
@@ -28,21 +27,21 @@ fun HomeTopBar( title: String, navController: NavController, home: Boolean = tru
             contentColor = KYCTheme.colors.textSecondary,
             elevation = 5.dp, // No shadow needed
             title = {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.h5,
-                    color = KYCTheme.colors.textSecondary,
-                    textAlign = TextAlign.Center,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier
-                        .padding(5.dp)
-                        .weight(1f)
-                        .align(Alignment.CenterHorizontally)
-                )
+                Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center){
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.h5,
+                        color = KYCTheme.colors.textSecondary,
+                        textAlign = TextAlign.Center,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier
+                            .padding(0.dp)
+                            .weight(1f)
+                    )
+                }
             },
             navigationIcon = {
-                if (!home){
                     IconButton(onClick = {
                         navController.navigateUp()
                     }) {
@@ -50,7 +49,6 @@ fun HomeTopBar( title: String, navController: NavController, home: Boolean = tru
                             id = R.string.arrow_back
                         ))
                     }
-                }
             }
             )
         Divider()

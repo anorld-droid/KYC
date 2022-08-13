@@ -19,7 +19,7 @@ import com.anolddroid.kyc.ui.views.home.components.PersonItem
 fun ConstituencyDetail(constituency: Constituency, navController: NavController) {
     KYCScaffold(
         topBar = {
-            TopBar(constituency.name, navController, false)
+            TopBar(constituency.name, navController)
         },
         content = {
             Body(navController = navController, constituency = constituency)
