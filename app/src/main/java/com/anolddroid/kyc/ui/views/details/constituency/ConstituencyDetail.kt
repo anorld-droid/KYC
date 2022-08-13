@@ -1,4 +1,4 @@
-package com.anolddroid.kyc.ui.views.details
+package com.anolddroid.kyc.ui.views.details.constituency
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -10,9 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.anolddroid.kyc.model.Constituency
-import com.anolddroid.kyc.model.leaders
-import com.anolddroid.kyc.ui.components.HomeTopBar
 import com.anolddroid.kyc.ui.components.KYCScaffold
+import com.anolddroid.kyc.ui.components.TopBar
 import com.anolddroid.kyc.ui.views.home.components.PersonItem
 
 
@@ -20,7 +19,7 @@ import com.anolddroid.kyc.ui.views.home.components.PersonItem
 fun ConstituencyDetail(constituency: Constituency, navController: NavController) {
     KYCScaffold(
         topBar = {
-            HomeTopBar(constituency.name, navController, false)
+            TopBar(constituency.name, navController, false)
         },
         content = {
             Body(navController = navController, constituency = constituency)
@@ -30,7 +29,6 @@ fun ConstituencyDetail(constituency: Constituency, navController: NavController)
 
 @Composable
 private fun Body(navController: NavController, constituency: Constituency) {
-
     LazyColumn(
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 12.dp)
